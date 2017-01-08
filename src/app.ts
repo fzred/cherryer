@@ -1,17 +1,11 @@
 import * as Koa from 'koa'
+import route from'./router'
 
 const app = new Koa()
 
-app.use(async(ctx, next) => {
-    const start = Date.now()
-    await next()
-    const ms = Date.now() - start
-    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
+app
+  .use(route.routes())
+  .use(route.allowedMethods())
 
-// response
-app.use(ctx => {
-    ctx.body = 'Hello Koa in app-async.js'
-})
 
 app.listen(3000)

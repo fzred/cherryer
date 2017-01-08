@@ -4,7 +4,8 @@
     "target": "es2015",
     "sourceMap": true,
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules"
