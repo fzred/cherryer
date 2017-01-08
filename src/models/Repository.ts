@@ -2,8 +2,8 @@
  * 仓库
  */
 interface Repository {
-  name: '',
-  url: '',
+  readonly name: '',
+  readonly url: '',
 }
 
 export default Repository
