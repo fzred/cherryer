@@ -1,0 +1,28 @@
+{
+  "name": "cherryer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node-dev --harmony dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fzred/cherryer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fzred/cherryer/issues"
+  },
+  "homepage": "https://github.com/fzred/cherryer#readme",
+  "dependencies": {
+    "koa": "^2.0.0",
+    "koa-router": "^7.0.1",
+    "lowdb": "^0.14.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.37"
+  }
+}
