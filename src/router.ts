@@ -1,24 +1,52 @@
 import * as KoaRouter from 'koa-router'
 import * as db from'./db/db'
 const router = new KoaRouter()
-import Commit from './models/Commit'
+import{checkStrEmpty} from './utils'
 
 router.get('/api/getState', async ctx => {
   ctx.body = db.getState()
 })
 
 router.get('/api/getCommitList', async ctx => {
-  ctx.body = db.getState()
+  ctx.body = db.getCommitList()
 })
 
 router.get('/api/insertCommit', async ctx => {
-  var d = db.insertCommit({
-    verNumber: 'fsdf',
-    repoName: 'sdfsd',
-    syncRepoList: [],
+  const {verNumber, repoName, syncRepoName} = ctx.request.query
+  if (checkStrEmpty(verNumber)) {
+    throw new Error('verNumber必填')
+  }
+  if (checkStrEmpty(repoName)) {
+    throw new Error('repoName必填')
+  }
+
+  const syncRepoList: Array<AyncRepo> = []
+
+  if (typeof syncRepoName === 'string') {
+    syncRepoList.push({
+      synced: false,
+      repoName: syncRepoName,
+    })
+  }
+  if (Array.isArray(syncRepoName)) {
+    syncRepoName.forEach(repo => {
+      syncRepoList.push({
+        synced: false,
+        repoName: repo,
+      })
+    })
+  }
+
+  db.insertCommit({
+    verNumber,
+    repoName,
+    syncRepoList,
   })
-  console.log(d)
-  ctx.body = '2'
+  ctx.body = {
+    code: 1000,
+    desc: 'success',
+    data: null,
+  }
 })
 
 export default router
