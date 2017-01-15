@@ -16,3 +16,7 @@ fis.match('**.ts', {
   }),
   rExt: '.js'
 })
+
+fis.match('/client/(**.js)', {
+  url: '$1'
+})

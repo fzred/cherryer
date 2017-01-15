@@ -1,4 +1,6 @@
 import * as KoaRouter from 'koa-router'
+import * as send from 'koa-send'
+import * as path from 'path'
 import * as db from'./db/db'
 const router = new KoaRouter()
 import{checkStrEmpty} from './utils'
@@ -47,6 +49,14 @@ router.get('/api/insertCommit', async ctx => {
     desc: 'success',
     data: null,
   }
+})
+
+router.get('/node_modules/**', async ctx => {
+  await send(ctx, ctx.path)
+})
+
+router.get('/db.json', async ctx => {
+  await send(ctx, ctx.path)
 })
 
 export default router

@@ -1,4 +1,6 @@
 import * as Koa from 'koa'
+import * as koaStatic from 'koa-static'
+import * as path from 'path'
 import route from'./router'
 
 const app = new Koa()
@@ -11,9 +13,9 @@ app.use(async(ctx, next) => {
   }
 })
 
-app
-  .use(route.routes())
-  .use(route.allowedMethods())
+app.use(route.routes()).use(route.allowedMethods())
 
+
+app.use(koaStatic(path.resolve(__dirname, '../client')))
 
 app.listen(3000)
