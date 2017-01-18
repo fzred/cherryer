@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommitService } from "./commit.service";
 import Commit from '../../server/models/Commit'
 
@@ -7,19 +7,23 @@ import Commit from '../../server/models/Commit'
   templateUrl: __uri('./app.component.html'),
   providers: [ CommitService ],
 })
-export class AppComponent {
-  title: string;
+export class AppComponent implements OnInit {
+  title: string = '';
   commints: Commit[] = [];
-  commitService: CommitService;
 
-  constructor (commitService: CommitService) {
-    this.title = '1';
-    this.commitService = commitService
+  constructor (private commitService: CommitService) {
   }
 
-  async ngOnInit(){
-    this.commints = await this.commitService.getCommit()
-    console.log(this.commints)
+  async getCommit () {
+    // this.commints =await this.commitService.getCommit()
+    this.commitService.getCommit().then(commints => {
+      this.commints = commints
+      console.log(this.commints)
+    })
+  }
+
+  ngOnInit () {
+    this.getCommit()
   }
 
 }
