@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http'
 import { AppComponent }  from './app.component'
 import { AppRoutingModule } from './app-routing.module'
+import { CommitService } from './commit.service'
 
 import { CommitListComponent } from './pages/commit-list/commit-list.component'
 
@@ -17,6 +18,7 @@ import { CommitListComponent } from './pages/commit-list/commit-list.component'
     AppComponent,
     CommitListComponent,
   ],
+  providers: [ CommitService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
