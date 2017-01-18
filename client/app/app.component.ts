@@ -3,6 +3,7 @@ import { CommitService } from "./commit.service";
 import Commit from '../../server/models/Commit'
 
 @Component({
+  moduleId: module.id,
   selector: 'my-app',
   templateUrl: __uri('./app.component.html'),
   providers: [ CommitService ],
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit () {
-    this.getCommit()
+    // this.getCommit()
   }
 
 }
