@@ -6,5 +6,4 @@ import { Component } from '@angular/core'
   templateUrl: __uri('./app.component.html'),
 })
 export class AppComponent {
-  title: string = '33';
 }

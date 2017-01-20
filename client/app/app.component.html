@@ -1,5 +1,8 @@
-<h1>Cherryer</h1>
-
-<input type="text" #box (keyup)="0" />
-{{ box.value }}
-<router-outlet></router-outlet>
+<div class="container">
+  <h1>Cherryer</h1>
+  <nav>
+    <a routerLink="/commit-list" routerLinkActive="active">commit list</a>
+    <a routerLink="/commit-add" routerLinkActive="active">add</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

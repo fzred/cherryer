@@ -2,8 +2,8 @@
  * 仓库
  */
 interface Repository {
-  readonly name: '',
-  readonly url: '',
+  readonly name: string,
+  readonly url: string,
   diskPath: string,
 }
 

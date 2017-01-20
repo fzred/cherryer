@@ -1,0 +1,23 @@
+<h1>添加新合并请求</h1>
+<form>
+
+  <div class="form-group">
+    <label for="name">Revision Number</label>
+    <input type="text" class="form-control" id="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="alterEgo">Alter Ego</label>
+    <input type="text" class="form-control" id="alterEgo">
+  </div>
+
+  <div class="form-group">
+    <label for="repositorys">Hero Power</label>
+    <select class="form-control" id="repositorys" required>
+      <option *ngFor="let repo of repositorys" [value]="repo.name">{{repo.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+
+</form>
