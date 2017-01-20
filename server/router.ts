@@ -6,10 +6,6 @@ import * as db from'./db/db'
 const router = new KoaRouter()
 import { checkStrEmpty } from './utils'
 
-const simpleGit = git(path.resolve('D:\\farr\\source\\allprya.com\\h5-allpyra'))
-simpleGit.show('--summary --pretty=format:%s%D d45201a276b04dbb62f043ab5e8e855fcc551dae', function (err, log) {
-  console.log(log)
-})
 router.get('/api/getState', async ctx => {
   ctx.body = db.getState()
 })
@@ -85,6 +81,18 @@ router.get('/api/commitUpdateSyncRepo', async ctx => {
     desc: 'success',
     data: null,
   }
+})
+
+router.get('/api/getCommitDetail', async ctx => {
+  const { verNumber } = ctx.request.query
+  const commit = db.getCommitByVerNumber(verNumber)
+  const repository = db.getRepositoryByName(commit.repoName)
+
+  const simpleGit = git(path.resolve(repository.url))
+  simpleGit.show(`--summary --pretty=format:%s%D ${commit.verNumber}`, (err, log) => {
+    console.log(log)
+    ctx.body = log
+  })
 })
 
 router.get('/api/getRepositoryList', async ctx => {

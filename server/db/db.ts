@@ -55,3 +55,6 @@ export function insertRepository (repository: Repository) {
   return db.get('repository').push(repository).value()
 }
 
+export function getRepositoryByName (name): Repository {
+  return db.get('commit').find({ name }).value() as Repository
+}
