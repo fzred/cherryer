@@ -1,9 +1,11 @@
 import * as KoaRouter from 'koa-router'
 import * as send from 'koa-send'
+import * as Git from 'nodegit'
 import * as db from'./db/db'
 const router = new KoaRouter()
 import { checkStrEmpty } from './utils'
 
+Git.Repository.open('')
 router.get('/api/getState', async ctx => {
   ctx.body = db.getState()
 })
@@ -86,7 +88,7 @@ router.get('/api/getRepositoryList', async ctx => {
 })
 
 router.get('/api/insertRepository', async ctx => {
-  const { name, url } = ctx.request.query
+  const { name, url, diskPath } = ctx.request.query
   if (checkStrEmpty(name)) {
     throw new Error('name必填')
   }
@@ -96,6 +98,7 @@ router.get('/api/insertRepository', async ctx => {
   db.insertRepository({
     name,
     url,
+    diskPath,
   })
   ctx.body = {
     code: 1000,
