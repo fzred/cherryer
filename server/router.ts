@@ -1,11 +1,15 @@
 import * as KoaRouter from 'koa-router'
 import * as send from 'koa-send'
-import * as Git from 'nodegit'
+import * as path from 'path'
+import * as git from 'simple-git'
 import * as db from'./db/db'
 const router = new KoaRouter()
 import { checkStrEmpty } from './utils'
 
-Git.Repository.open('')
+const simpleGit = git(path.resolve('D:\\farr\\source\\allprya.com\\h5-allpyra'))
+simpleGit.show('--summary --pretty=format:%s%D d45201a276b04dbb62f043ab5e8e855fcc551dae', function (err, log) {
+  console.log(log)
+})
 router.get('/api/getState', async ctx => {
   ctx.body = db.getState()
 })
