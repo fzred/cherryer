@@ -19,6 +19,7 @@ export class CommitAddComponent implements OnInit {
       {
         name: 'h5-allpyra',
         url: 'fsdfs',
+        diskPath: '',
       },
     ]
   }
