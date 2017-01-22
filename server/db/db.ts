@@ -5,9 +5,13 @@ import Commit from '../models/Commit'
 import Repository from "../models/Repository"
 export const db = new Lowdb(path.resolve(__dirname, '../../db.json'))
 
+export function backupsDB () {
+  sendDB(`<pre>${JSON.stringify(getState(), null, 2)}</pre>`)
+}
+
 // 5个小时备份一次
 setInterval(() => {
-  sendDB(`<pre>${JSON.stringify(getState(), null, 2)}</pre>`)
+  backupsDB()
 }, 1000 * 3600 * 5)
 
 export function getCommitList () {
