@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise'
 
-import Commit from '../../server/models/Commit'
+import Commit from '../../../server/models/Commit'
 
 @Injectable()
 export class CommitService {

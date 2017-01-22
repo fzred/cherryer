@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 
 import Commit from '../../../../server/models/Commit'
-import { CommitService } from '../../commit.service'
+import { CommitService } from '../../service/commit.service'
 
 @Component({
   moduleId: module.id,

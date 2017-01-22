@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 
 import Commit from '../../../../server/models/Commit'
 import Repository from '../../../../server/models/Repository'
-import { CommitService } from '../../commit.service'
+import { RepositoryService } from '../../service/repository.service'
 
 @Component({
   moduleId: module.id,
@@ -13,12 +13,15 @@ export class RepositoryAddComponent {
 
   model: Repository = { name: '', url: '', diskPath: '' }
 
-  constructor () {
+  constructor (private repositoryService: RepositoryService) {
 
   }
 
   onSubmit () {
-    console.log(this.model, 'onSubmit')
+    this.repositoryService.insertRepository(this.model)
+      .then((res) => {
+        console.log(res)
+      })
   }
 
 }
