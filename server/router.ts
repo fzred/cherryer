@@ -14,8 +14,8 @@ router.get('/api/getCommitList', async ctx => {
   ctx.body = db.getCommitList()
 })
 
-router.get('/api/insertCommit', async ctx => {
-  const { verNumber, repoName, syncRepoName } = ctx.request.query
+router.post('/api/insertCommit', async ctx => {
+  const { verNumber, repoName, syncRepoName } = ctx.request.body
   if (checkStrEmpty(verNumber)) {
     throw new Error('verNumber必填')
   }
