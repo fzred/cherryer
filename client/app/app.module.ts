@@ -10,6 +10,7 @@ import { RepositoryService } from './service/repository.service'
 import { CommitListComponent } from './pages/commit-list/commit-list.component'
 import { CommitAddComponent } from './pages/commit-add/commit-add.component'
 import { RepositoryAddComponent } from './pages/repository-add/repository-add.component'
+import { RepositoryListComponent } from './pages/repository-list/repository-list.component'
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { RepositoryAddComponent } from './pages/repository-add/repository-add.co
     CommitListComponent,
     CommitAddComponent,
     RepositoryAddComponent,
+    RepositoryListComponent,
   ],
   providers: [
     CommitService,
