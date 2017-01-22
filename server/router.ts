@@ -69,10 +69,12 @@ router.get('/api/commitAddSyncRepo', async ctx => {
   }
 })
 
-router.get('/api/commitUpdateSyncRepo', async ctx => {
-  const { verNumber, syncRepoName, synced } = ctx.request.query
+router.post('/api/commitUpdateSyncRepo', async ctx => {
+  const { verNumber, syncRepoName, synced } = ctx.request.body
   const commit = db.getCommitByVerNumber(verNumber)
-  commit.syncRepoList.find(item => item.repoName === syncRepoName).synced = synced
+  const syncRepo: AyncRepo = commit.syncRepoList.find(item => item.repoName === syncRepoName)
+  syncRepo.synced = synced
+  syncRepo.syncTime = new Date()
 
   db.updateCommit(verNumber, commit)
 

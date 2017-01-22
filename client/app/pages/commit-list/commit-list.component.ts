@@ -18,7 +18,17 @@ export class CommitListComponent implements OnInit {
     // this.commints =await this.commitService.getCommit()
     this.commitService.getCommit().then(commints => {
       this.commints = commints
-      console.log(this.commints)
+    })
+  }
+
+  onAyncRepo (commint: Commit, ayncRepo: AyncRepo) {
+    console.log(commint.verNumber, ayncRepo.repoName, ayncRepo.synced)
+    this.commitService.commitUpdateSyncRepo({
+      verNumber: commint.verNumber,
+      syncRepoName: ayncRepo.repoName,
+      synced: ayncRepo.synced,
+    }).then(res => {
+      console.log(res)
     })
   }
 

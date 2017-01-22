@@ -3,7 +3,9 @@
     {{commit.repoName}}: {{ commit.verNumber }}
     <div>
       <label *ngFor="let repo of commit.syncRepoList">
-        <input type="checkbox" [(ngModel)]="repo.synced">{{repo.repoName}}
+        <input type="checkbox"
+               [(ngModel)]="repo.synced" (change)="onAyncRepo(commit,repo)"
+        >{{repo.repoName}}
       </label>
     </div>
   </li>

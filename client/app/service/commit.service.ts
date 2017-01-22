@@ -21,7 +21,10 @@ export class CommitService {
       repoName: commit.repoName,
       verNumber: commit.verNumber,
       syncRepoName: syncRepoNameList,
-    })
-      .toPromise()
+    }).toPromise()
+  }
+
+  commitUpdateSyncRepo (params: { verNumber: string, syncRepoName: string, synced: Boolean }): Promise<any> {
+    return this.http.post('/api/commitUpdateSyncRepo', params).toPromise()
   }
 }
