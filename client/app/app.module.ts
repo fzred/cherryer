@@ -8,6 +8,7 @@ import { CommitService } from './commit.service'
 
 import { CommitListComponent } from './pages/commit-list/commit-list.component'
 import { CommitAddComponent } from './pages/commit-add/commit-add.component'
+import { RepositoryAddComponent } from './pages/repository-add/repository-add.component'
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CommitAddComponent } from './pages/commit-add/commit-add.component'
     AppComponent,
     CommitListComponent,
     CommitAddComponent,
+    RepositoryAddComponent,
   ],
   providers: [ CommitService ],
   bootstrap: [ AppComponent ]

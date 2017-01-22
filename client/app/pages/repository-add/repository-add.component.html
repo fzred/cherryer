@@ -1,0 +1,26 @@
+<h1>添加仓库</h1>
+<form (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="name">name</label>
+    <input type="text" class="form-control" id="name"
+           required
+           [(ngModel)]="model.name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="url">url</label>
+    <input type="text" class="form-control" id="url"
+           required
+           [(ngModel)]="model.url" name="url">
+  </div>
+  <div class="form-group">
+    <label for="diskPath">diskPath</label>
+    <input type="text" class="form-control" id="diskPath"
+           required
+           [(ngModel)]="model.diskPath" name="diskPath">
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+
+</form>
