@@ -21,12 +21,12 @@ export class CommitListComponent implements OnInit {
     })
   }
 
-  onAyncRepo (commint: Commit, ayncRepo: AyncRepo) {
-    console.log(commint.verNumber, ayncRepo.repoName, ayncRepo.synced)
+  onAyncRepo (commint: Commit, syncRepo: SyncRepo) {
+    console.log(commint.verNumber, syncRepo.repoName, syncRepo.synced)
     this.commitService.commitUpdateSyncRepo({
       verNumber: commint.verNumber,
-      syncRepoName: ayncRepo.repoName,
-      synced: ayncRepo.synced,
+      syncRepoName: syncRepo.repoName,
+      synced: syncRepo.synced,
     }).then(res => {
       console.log(res)
     })

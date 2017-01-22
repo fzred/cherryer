@@ -23,7 +23,7 @@ router.post('/api/insertCommit', async ctx => {
     throw new Error('repoName必填')
   }
 
-  const syncRepoList: Array<AyncRepo> = []
+  const syncRepoList: Array<SyncRepo> = []
 
   if (typeof syncRepoName === 'string') {
     syncRepoList.push({
@@ -72,7 +72,7 @@ router.get('/api/commitAddSyncRepo', async ctx => {
 router.post('/api/commitUpdateSyncRepo', async ctx => {
   const { verNumber, syncRepoName, synced } = ctx.request.body
   const commit = db.getCommitByVerNumber(verNumber)
-  const syncRepo: AyncRepo = commit.syncRepoList.find(item => item.repoName === syncRepoName)
+  const syncRepo: SyncRepo = commit.syncRepoList.find(item => item.repoName === syncRepoName)
   syncRepo.synced = synced
   syncRepo.syncTime = new Date()
 

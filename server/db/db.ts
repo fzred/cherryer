@@ -38,7 +38,7 @@ export function updateCommit (verNumber: string, commit: Commit) {
     .value()
 }
 
-export function updateCommitSyncRepoList (verNumber: string, syncRepoList: AyncRepo[]) {
+export function updateCommitSyncRepoList (verNumber: string, syncRepoList: SyncRepo[]) {
   return db.get('commit')
     .find({ verNumber })
     .assign({ syncRepoList })
