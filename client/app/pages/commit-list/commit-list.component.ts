@@ -14,7 +14,7 @@ export class CommitListComponent implements OnInit {
   constructor (private commitService: CommitService) {
   }
 
-  async getCommit () {
+  getCommit () {
     // this.commints =await this.commitService.getCommit()
     this.commitService.getCommit().then(commints => {
       this.commints = commints
