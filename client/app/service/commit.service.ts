@@ -27,4 +27,10 @@ export class CommitService {
   commitUpdateSyncRepo (params: { verNumber: string, syncRepoName: string, synced: Boolean }): Promise<any> {
     return this.http.post('/api/commitUpdateSyncRepo', params).toPromise()
   }
+
+  getGitCommitDetail (params: { verNumber: string }): Promise<ServerResult> {
+    return this.http.post('/api/getGitCommitDetail', params)
+      .toPromise()
+      .then(res => res.json() as ServerResult)
+  }
 }

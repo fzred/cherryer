@@ -85,15 +85,21 @@ router.post('/api/commitUpdateSyncRepo', async ctx => {
   }
 })
 
-router.get('/api/getCommitDetail', async ctx => {
-  const { verNumber } = ctx.request.query
+router.post('/api/getGitCommitDetail', async ctx => {
+  const { verNumber } = ctx.request.body
   const commit = db.getCommitByVerNumber(verNumber)
   const repository = db.getRepositoryByName(commit.repoName)
 
-  const simpleGit = git(path.resolve(repository.url))
-  simpleGit.show(`--summary --pretty=format:%s%D ${commit.verNumber}`, (err, log) => {
-    console.log(log)
-    ctx.body = log
+  return new Promise(resolve => {
+    const simpleGit = git(path.resolve(repository.diskPath))
+    simpleGit.show([ '--summary', '--pretty=format:%an - %s', commit.verNumber ], (err, log) => {
+      ctx.body = {
+        code: 1000,
+        desc: 'success',
+        data: log,
+      }
+      resolve()
+    })
   })
 })
 

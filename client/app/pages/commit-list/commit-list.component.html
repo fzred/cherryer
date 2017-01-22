@@ -1,6 +1,8 @@
+<h1>合并列表</h1>
 <ul>
   <li *ngFor="let commit of commints">
-    {{commit.repoName}}: {{ commit.verNumber }}
+    <p>{{commit.repoName}}: {{ commit.verNumber }}</p>
+    <p>{{ gitCommitDetail[commit.verNumber] }}</p>
     <div>
       <label *ngFor="let repo of commit.syncRepoList">
         <input type="checkbox"
@@ -8,5 +10,6 @@
         >{{repo.repoName}}
       </label>
     </div>
+    <hr>
   </li>
 </ul>

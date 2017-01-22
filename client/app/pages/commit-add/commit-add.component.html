@@ -10,9 +10,11 @@
 
   <div class="form-group">
     <label for="repoName">repoName</label>
-    <input type="text" class="form-control" id="repoName"
-           required
-           [(ngModel)]="model.repoName" name="repoName">
+    <select class="form-control" id="repoName"
+            required
+            [(ngModel)]="model.repoName" name="repoName">
+      <option *ngFor="let repo of repositorys" [value]="repo.name">{{repo.name}}</option>
+    </select>
   </div>
 
   <div class="form-group">

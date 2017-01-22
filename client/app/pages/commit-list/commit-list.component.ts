@@ -9,7 +9,9 @@ import { CommitService } from '../../service/commit.service'
   templateUrl: __uri('./commit-list.component.html'),
 })
 export class CommitListComponent implements OnInit {
-  commints: Commit[] = [];
+  commints: Commit[] = []
+
+  gitCommitDetail = {}
 
   constructor (private commitService: CommitService) {
   }
@@ -18,6 +20,9 @@ export class CommitListComponent implements OnInit {
     // this.commints =await this.commitService.getCommit()
     this.commitService.getCommit().then(commints => {
       this.commints = commints
+      this.commints.forEach(item => {
+        this.getGitCommitDetail(item)
+      })
     })
   }
 
@@ -29,6 +34,14 @@ export class CommitListComponent implements OnInit {
       synced: syncRepo.synced,
     }).then(res => {
       console.log(res)
+    })
+  }
+
+  getGitCommitDetail (commit: Commit) {
+    this.commitService.getGitCommitDetail({
+      verNumber: commit.verNumber
+    }).then(({ data }) => {
+      this.gitCommitDetail[ commit.verNumber ] = data
     })
   }
 
