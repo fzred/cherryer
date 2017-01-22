@@ -99,8 +99,8 @@ router.get('/api/getRepositoryList', async ctx => {
   ctx.body = db.getRepositoryList()
 })
 
-router.get('/api/insertRepository', async ctx => {
-  const { name, url, diskPath } = ctx.request.query
+router.post('/api/insertRepository', async ctx => {
+  const { name, url, diskPath } = ctx.request.body
   if (checkStrEmpty(name)) {
     throw new Error('name必填')
   }

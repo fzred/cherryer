@@ -2,9 +2,13 @@ import * as Koa from 'koa'
 import * as koaStatic from 'koa-static'
 import * as send from 'koa-send'
 import * as path from 'path'
+import * as bodyParser from 'koa-bodyparser'
 import route from'./router'
 
 const app = new Koa()
+
+app.use(bodyParser())
+
 app.use(async (ctx, next) => {
   try {
     await next()
