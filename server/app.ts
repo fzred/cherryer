@@ -13,8 +13,8 @@ app.use(async (ctx, next) => {
   try {
     await next()
   } catch (err) {
-    ctx.body = { desc: err.message };
-    ctx.status = err.status || 500;
+    ctx.body = { desc: err.message }
+    ctx.status = err.status || 500
   }
 })
 

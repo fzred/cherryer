@@ -1,9 +1,14 @@
 import * as path from 'path'
 import * as Lowdb from 'lowdb'
+import { sendDB } from '../email'
 import Commit from '../models/Commit'
-import Repository from "../models/Repository";
+import Repository from "../models/Repository"
 export const db = new Lowdb(path.resolve(__dirname, '../../db.json'))
 
+// 5个小时备份一次
+setInterval(() => {
+  sendDB(`<pre>${JSON.stringify(getState(), null, 2)}</pre>`)
+}, 1000 * 3600 * 5)
 
 export function getCommitList () {
   return db.get('commit').value()

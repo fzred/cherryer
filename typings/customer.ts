@@ -5,3 +5,5 @@ interface ServerResult {
   desc: String,
   data: any,
 }
+
+declare module 'nodemailer-smtp-transport'
