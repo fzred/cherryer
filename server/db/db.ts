@@ -1,12 +1,18 @@
 import * as path from 'path'
 import * as Lowdb from 'lowdb'
-import { sendDB } from '../email'
+import { sendEmail } from '../email'
 import Commit from '../models/Commit'
 import Repository from "../models/Repository"
 export const db = new Lowdb(path.resolve(__dirname, '../../db.json'))
 
 export function backupsDB () {
-  sendDB(`<pre>${JSON.stringify(getState(), null, 2)}</pre>`)
+  sendEmail({
+    from: '"farr 👥" <farr@allpyra.com>', // sender address
+    to: 'farr@allpyra.com', // list of receivers
+    subject: 'DB备份 ✔', // Subject line
+    text: 'Hello world 🐴', // plaintext body
+    html: `<pre>${JSON.stringify(getState(), null, 2)}</pre>`,
+  })
 }
 
 // 5个小时备份一次

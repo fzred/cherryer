@@ -12,28 +12,8 @@ const transporter = nodemailer.createTransport(smtp({
   }
 }))
 
-const defaultMailOptions = {
-  from: '"farr 👥" <farr@allpyra.com>', // sender address
-  to: 'farr@allpyra.com', // list of receivers
-  subject: 'DB备份 ✔', // Subject line
-  text: 'Hello world 🐴', // plaintext body
-  html: '<b>Hello world 🐴</b>' // html body
-}
-
 export function sendEmail (mailOptions) {
 // send mail with defined transport object
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      return console.log(error);
-    }
-    console.log('Message sent: ' + info.response);
-  })
-}
-
-export function sendDB (data: string) {
-  const mailOptions = Object.assign({}, defaultMailOptions, {
-    html: data,
-  })
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       return console.log(error);
