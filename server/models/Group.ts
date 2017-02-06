@@ -2,7 +2,7 @@
  * 分组
  */
 interface Repository {
-  id: string,
+  id?: string,
   name: string,
 }
 

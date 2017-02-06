@@ -3,6 +3,9 @@ import * as Lowdb from 'lowdb'
 import { sendEmail } from '../email'
 import Commit from '../models/Commit'
 import Repository from "../models/Repository"
+import Group from "../models/Group"
+import * as uuid from 'uuid'
+
 export const db = new Lowdb(path.resolve(__dirname, '../../db.json'))
 
 export function backupsDB () {
@@ -72,4 +75,17 @@ export function insertRepository (repository: Repository) {
 
 export function getRepositoryByName (name): Repository {
   return db.get('repository').find({ name }).value() as Repository
+}
+
+export function insertGroup (group: Group) {
+  if (!group.id) {
+    group.id = uuid.v4()
+  }
+  if (db.get('group').value<Array<Group>>().find(item => item.id === group.id))
+    throw new Error('id重复')
+  return db.get('repository').push(group).value()
+}
+
+export function getGroupList(){
+  return db.get('group').value()
 }
