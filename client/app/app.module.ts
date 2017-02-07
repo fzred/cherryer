@@ -6,12 +6,14 @@ import { AppComponent }  from './app.component'
 import { AppRoutingModule } from './app-routing.module'
 import { CommitService } from './service/commit.service'
 import { RepositoryService } from './service/repository.service'
+import { GroupService } from './service/group.service'
 
 import { CommitListComponent } from './pages/commit-list/commit-list.component'
 import { CommitAddComponent } from './pages/commit-add/commit-add.component'
 import { RepositoryAddComponent } from './pages/repository-add/repository-add.component'
 import { RepositoryListComponent } from './pages/repository-list/repository-list.component'
-
+import { GroupListComponent } from './pages/group-list/group-list.component'
+import { GroupAddComponent } from './pages/group-add/group-add.component'
 
 @NgModule({
   imports: [
@@ -26,10 +28,13 @@ import { RepositoryListComponent } from './pages/repository-list/repository-list
     CommitAddComponent,
     RepositoryAddComponent,
     RepositoryListComponent,
+    GroupListComponent,
+    GroupAddComponent,
   ],
   providers: [
     CommitService,
     RepositoryService,
+    GroupService,
   ],
   bootstrap: [ AppComponent ]
 })
