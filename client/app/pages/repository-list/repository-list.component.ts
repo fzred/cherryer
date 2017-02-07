@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 
+import Group from '../../../../server/models/Group'
 import Repository from '../../../../server/models/Repository'
 import { RepositoryService } from '../../service/repository.service'
+import { GroupService } from '../../service/group.service'
 
 @Component({
   moduleId: module.id,
@@ -11,7 +13,10 @@ import { RepositoryService } from '../../service/repository.service'
 export class RepositoryListComponent implements OnInit {
   repositlryList: Repository[] = []
 
-  constructor (private repositoryService: RepositoryService) {
+  groupList: Group[] = []
+
+  constructor (private repositoryService: RepositoryService,
+               private groupService: GroupService,) {
   }
 
   getRepositoryList () {
@@ -22,6 +27,22 @@ export class RepositoryListComponent implements OnInit {
 
   ngOnInit () {
     this.getRepositoryList()
+
+    this.groupService.getGroupList().then(groupList => {
+      this.groupList = groupList
+    })
   }
 
+  get groupRepositoryList (): { group: Group, repositlryList: Repository[] }[] {
+    const groupRepository = []
+
+    this.groupList.forEach(group => {
+      groupRepository.push({
+        group,
+        repositlryList: this.repositlryList.filter(repository => repository.groupId === group.id)
+      })
+    })
+
+    return groupRepository
+  }
 }

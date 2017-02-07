@@ -1,6 +1,11 @@
 <h1>仓库列表</h1>
-<ul>
-  <li *ngFor="let repository of repositlryList">
-    <p>{{ repository.name }}</p>
-  </li>
-</ul>
+<section *ngFor="let groupRepository of groupRepositoryList">
+  <h4>{{ groupRepository.group.name }}</h4>
+  <ul>
+    <li *ngFor="let repository of groupRepository.repositlryList">
+      <p>{{ repository.name }}</p>
+    </li>
+  </ul>
+  <br>
+</section>
+
