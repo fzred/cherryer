@@ -83,7 +83,7 @@ export function insertGroup (group: Group) {
   }
   if (db.get('group').value<Array<Group>>().find(item => item.id === group.id))
     throw new Error('id重复')
-  return db.get('repository').push(group).value()
+  return db.get('group').push(group).value()
 }
 
 export function getGroupList(){
