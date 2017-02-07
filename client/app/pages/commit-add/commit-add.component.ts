@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 
+import Group from '../../../../server/models/Group'
 import Commit from '../../../../server/models/Commit'
 import Repository from '../../../../server/models/Repository'
 import { CommitService } from '../../service/commit.service'
 import { RepositoryService } from '../../service/repository.service'
+import { GroupService } from "../../service/group.service";
 
 @Component({
   moduleId: module.id,
@@ -15,10 +17,15 @@ export class CommitAddComponent implements OnInit {
 
   syncRepoNameList: string[] = []
 
-  repositorys: Repository[];
+  repositorys: Repository[]
+
+  groupId: string = ''
+
+  groupList: Group[] = []
 
   constructor (private commitService: CommitService,
-               private repositoryService: RepositoryService,) {
+               private repositoryService: RepositoryService,
+               private groupService: GroupService,) {
   }
 
   getRepositoryList () {
@@ -36,5 +43,9 @@ export class CommitAddComponent implements OnInit {
 
   ngOnInit () {
     this.getRepositoryList()
+
+    this.groupService.getGroupList().then(groupList => {
+      this.groupList = groupList
+    })
   }
 }
