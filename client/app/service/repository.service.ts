@@ -16,10 +16,7 @@ export class RepositoryService {
   }
 
   insertRepository (repository: Repository): Promise<any> {
-    return this.http.post('/api/insertRepository', {
-      name: repository.name,
-      url: repository.url,
-      diskPath: repository.diskPath,
-    }).toPromise()
+    return this.http.post('/api/insertRepository', repository)
+      .toPromise()
   }
 }

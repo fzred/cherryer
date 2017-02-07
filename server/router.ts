@@ -108,17 +108,21 @@ router.get('/api/getRepositoryList', async ctx => {
 })
 
 router.post('/api/insertRepository', async ctx => {
-  const { name, url, diskPath } = ctx.request.body
+  const { name, url, diskPath, groupId } = ctx.request.body
   if (checkStrEmpty(name)) {
     throw new Error('name必填')
   }
   if (checkStrEmpty(url)) {
     throw new Error('url必填')
   }
+  if (checkStrEmpty(groupId)) {
+    throw new Error('groupId必填')
+  }
   db.insertRepository({
     name,
     url,
     diskPath,
+    groupId,
   })
   ctx.body = {
     code: 1000,

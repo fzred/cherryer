@@ -21,6 +21,15 @@
            [(ngModel)]="model.diskPath" name="diskPath">
   </div>
 
+  <div class="form-group">
+    <label for="syncRepoNameList">group</label>
+    <select class="form-control" id="syncRepoNameList"
+            required
+            [(ngModel)]="model.groupId" name="syncRepoNameList">
+      <option *ngFor="let group of groupList" [value]="group.id">{{group.name}}</option>
+    </select>
+  </div>
+
   <button type="submit" class="btn btn-default">Submit</button>
 
 </form>
