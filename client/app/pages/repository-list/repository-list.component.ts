@@ -11,7 +11,7 @@ import { GroupService } from '../../service/group.service'
   templateUrl: __uri('./repository-list.component.html'),
 })
 export class RepositoryListComponent implements OnInit {
-  repositlryList: Repository[] = []
+  repositoryList: Repository[] = []
 
   groupList: Group[] = []
 
@@ -21,7 +21,7 @@ export class RepositoryListComponent implements OnInit {
 
   getRepositoryList () {
     this.repositoryService.getRepositoryList().then(commints => {
-      this.repositlryList = commints
+      this.repositoryList = commints
     })
   }
 

@@ -1,6 +1,15 @@
 <h1>合并列表</h1>
+<form>
+  <label for="groupId">filter</label>
+  <select class="form-control" id="groupId"
+          required
+          [(ngModel)]="groupId"  name="groupId">
+    <option value="">全部</option>
+    <option *ngFor="let group of groupList" [value]="group.id">{{group.name}}</option>
+  </select>
+</form>
 <ul>
-  <li *ngFor="let commit of commints">
+  <li *ngFor="let commit of commintListByFilter">
     <p>{{commit.repoName}}: {{ commit.verNumber }}</p>
     <p>{{ gitCommitDetail[commit.verNumber] }}</p>
     <div>

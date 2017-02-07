@@ -2,7 +2,7 @@
 <section *ngFor="let group of groupList">
   <h4>{{ group.name }}</h4>
   <ul>
-    <li *ngFor="let repository of (repositlryList | repositoryGroup:group.id)">
+    <li *ngFor="let repository of (repositoryList | repositoryGroup:group.id)">
       <p>{{ repository.name }}</p>
     </li>
   </ul>
