@@ -4,6 +4,9 @@ import { HttpModule }    from '@angular/http'
 import { FormsModule }   from '@angular/forms'
 import { AppComponent }  from './app.component'
 import { AppRoutingModule } from './app-routing.module'
+
+import{ repositoryGroupPipe } from './pipe/repository-group.pipe'
+
 import { CommitService } from './service/commit.service'
 import { RepositoryService } from './service/repository.service'
 import { GroupService } from './service/group.service'
@@ -30,6 +33,7 @@ import { GroupAddComponent } from './pages/group-add/group-add.component'
     RepositoryListComponent,
     GroupListComponent,
     GroupAddComponent,
+    repositoryGroupPipe,
   ],
   providers: [
     CommitService,

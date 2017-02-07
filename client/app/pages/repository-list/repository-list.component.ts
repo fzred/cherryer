@@ -33,16 +33,4 @@ export class RepositoryListComponent implements OnInit {
     })
   }
 
-  get groupRepositoryList (): { group: Group, repositlryList: Repository[] }[] {
-    const groupRepository = []
-
-    this.groupList.forEach(group => {
-      groupRepository.push({
-        group,
-        repositlryList: this.repositlryList.filter(repository => repository.groupId === group.id)
-      })
-    })
-
-    return groupRepository
-  }
 }
