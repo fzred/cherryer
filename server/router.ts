@@ -127,6 +127,27 @@ router.post('/api/insertRepository', async ctx => {
   }
 })
 
+router.get('/api/getGroupList', async ctx => {
+  ctx.body = db.getGroupList()
+})
+
+
+router.post('/api/insertGroup', async ctx => {
+  const { name, id } = ctx.request.body
+  if (checkStrEmpty(name)) {
+    throw new Error('name必填')
+  }
+  db.insertGroup({
+    id,
+    name,
+  })
+  ctx.body = {
+    code: 1000,
+    desc: 'success',
+    data: null,
+  }
+})
+
 router.get('/node_modules/**', async ctx => {
   await send(ctx, ctx.path)
 })

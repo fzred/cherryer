@@ -9,12 +9,12 @@ import { RepositoryService } from '../../service/repository.service'
   templateUrl: __uri('./repository-list.component.html'),
 })
 export class RepositoryListComponent implements OnInit {
-  repositlryList: Repository[] = [];
+  repositlryList: Repository[] = []
 
   constructor (private repositoryService: RepositoryService) {
   }
 
-  async getRepositoryList () {
+  getRepositoryList () {
     this.repositoryService.getRepositoryList().then(commints => {
       this.repositlryList = commints
     })
@@ -23,4 +23,5 @@ export class RepositoryListComponent implements OnInit {
   ngOnInit () {
     this.getRepositoryList()
   }
+
 }
