@@ -23,19 +23,31 @@ export class CommitListComponent implements OnInit {
 
   repositoryList: Repository[] = []
 
+  hideComplete: Boolean = true // 隐藏已全部同步的
+
   constructor (private commitService: CommitService,
                private groupService: GroupService,
                private repositoryService: RepositoryService,) {
   }
 
   get commintListByFilter (): Commit[] {
-    if (!this.groupId) return this.commints
-    const repositoryList = this.repositoryList.filter(repostory => {
-      return repostory.groupId === this.groupId
-    })
-    return this.commints.filter(commint => {
-      return !!repositoryList.find(repository => repository.name === commint.repoName)
-    })
+    let commintList = this.commints
+    if (this.hideComplete) {
+      // 隐藏已全部同步的
+      commintList = commintList.filter(commint => {
+        return commint.syncRepoList.find(repo => !repo.synced)
+      })
+    }
+    if (this.groupId) {
+      // 分组
+      const repositoryList = this.repositoryList.filter(repostory => {
+        return repostory.groupId === this.groupId
+      })
+      commintList = commintList.filter(commint => {
+        return !!repositoryList.find(repository => repository.name === commint.repoName)
+      })
+    }
+    return commintList
   }
 
   getCommit () {

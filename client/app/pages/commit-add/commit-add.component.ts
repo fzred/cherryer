@@ -38,6 +38,7 @@ export class CommitAddComponent implements OnInit {
     this.commitService.insertCommit(this.model, this.syncRepoNameList)
       .then((res) => {
         console.log(res)
+        alert('添加成功')
       })
   }
 

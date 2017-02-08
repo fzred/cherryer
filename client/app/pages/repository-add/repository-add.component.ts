@@ -29,6 +29,7 @@ export class RepositoryAddComponent implements OnInit {
   onSubmit () {
     this.repositoryService.insertRepository(this.model).then((res) => {
       console.log(res)
+      alert('添加成功')
     })
   }
 
