@@ -1,5 +1,5 @@
 <h1>合并列表</h1>
-<form>
+<section>
   <label for="groupId">filter</label>
   <div>
     <select id="groupId"
@@ -9,10 +9,12 @@
       <option *ngFor="let group of groupList" [value]="group.id">{{group.name}}</option>
     </select>
     <label>
-      <input type="checkbox" [(ngModel)]="hideComplete" name="hideComplete">隐藏已全部同步的
+      <input type="checkbox"
+             [(ngModel)]="hideComplete" name="hideComplete"
+      >隐藏已全部同步的
     </label>
   </div>
-</form>
+</section>
 <ul>
   <li *ngFor="let commit of commintListByFilter">
     <p>{{commit.repoName}}: {{ commit.verNumber }}</p>
